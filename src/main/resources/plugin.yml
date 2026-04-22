@@ -1,0 +1,19 @@
+name: InteractiveImage
+version: '${version}'
+
+main: im5lb.interactiveimage.InteractiveImage
+api-version: '1.21'
+load: POSTWORLD
+depend: [ImageFrame]
+
+commands:
+  ii:
+    description: interactiveimage editor + reload
+    usage: "/ii [on|off] | /ii reload"
+    aliases: [iimage, iiimage, interactiveimage]
+    permission: interactiveimage.admin
+
+permissions:
+  interactiveimage.admin:
+    description: Access to InteractiveImage admin command
+    default: op
