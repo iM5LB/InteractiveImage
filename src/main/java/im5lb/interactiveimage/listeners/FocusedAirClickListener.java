@@ -19,6 +19,7 @@ import org.bukkit.event.player.PlayerAnimationEvent;
 import org.bukkit.event.player.PlayerAnimationType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.plugin.Plugin;
 
 import java.util.Map;
 import java.util.UUID;
@@ -35,14 +36,16 @@ public final class FocusedAirClickListener implements Listener {
     private final FocusScanner focusScanner;
     private final EditorManager editorManager;
 
-    private final ActionExecutor actionExecutor = new ActionExecutor();
+    private final ActionExecutor actionExecutor;
     private final Map<UUID, Long> lastLeftClickTick = new ConcurrentHashMap<>();
 
     public FocusedAirClickListener(
+            Plugin plugin,
             Supplier<InteractiveImageConfig> configSupplier,
             FocusScanner focusScanner,
             EditorManager editorManager
     ) {
+        this.actionExecutor = new ActionExecutor(plugin);
         this.configSupplier = configSupplier;
         this.focusScanner = focusScanner;
         this.editorManager = editorManager;

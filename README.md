@@ -63,6 +63,7 @@ Actions fire when a player left-clicks or right-clicks a configured frame. Each 
 |---|---|
 | `console:<command>` | Runs the command as the console |
 | `player:<command>` | Runs the command as the clicking player |
+| `server:<name>` | Sends the player to another server on the proxy (e.g. `server:survival`) |
 | `<command>` | Same as `player:` |
 
 Actions support placeholders that are replaced at runtime (e.g. player name, map name).
@@ -71,7 +72,13 @@ Actions support placeholders that are replaced at runtime (e.g. player name, map
 ```
 console:say %player% clicked the map
 player:warp spawn
+server:survival
 ```
+
+> `server:` sends a proxy transfer request via the BungeeCord plugin
+> message channel, so it works on BungeeCord and Velocity (legacy
+> channel). Use it instead of `player:server <name>` — backend
+> `performCommand` never reaches proxy commands like Velocity `/server`.
 
 ## Per-Frame Configuration
 

@@ -65,6 +65,9 @@ public final class InteractiveImage extends JavaPlugin {
         saveDefaultConfig();
         reloadInteractiveImageConfig();
 
+        // Outgoing proxy channel for the server: action (BungeeCord + Velocity legacy).
+        Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+
         // Initialize update checker
         if (getConfig().getBoolean("check-for-updates", true)) {
             updateChecker = new UpdateChecker(this);
@@ -121,7 +124,7 @@ public final class InteractiveImage extends JavaPlugin {
         frameInteractListener = new FrameInteractListener(this, () -> configModel, resolvers, editorManager, focusScanner::getFocusedFrameUuid);
 
         Bukkit.getPluginManager().registerEvents(frameInteractListener, this);
-        Bukkit.getPluginManager().registerEvents(new FocusedAirClickListener(() -> configModel, focusScanner, editorManager), this);
+        Bukkit.getPluginManager().registerEvents(new FocusedAirClickListener(this, () -> configModel, focusScanner, editorManager), this);
         Bukkit.getPluginManager().registerEvents(new EditorListener(this, editorManager), this);
 
         focusScanner.start();

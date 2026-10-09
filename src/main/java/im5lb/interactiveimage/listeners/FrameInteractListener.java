@@ -32,7 +32,7 @@ public final class FrameInteractListener implements Listener {
     private final EditorManager editorManager;
     private final Function<UUID, UUID> focusedFrameLookup;
 
-    private final ActionExecutor actionExecutor = new ActionExecutor();
+    private final ActionExecutor actionExecutor;
 
     public FrameInteractListener(
             Plugin plugin,
@@ -41,6 +41,7 @@ public final class FrameInteractListener implements Listener {
             EditorManager editorManager,
             Function<UUID, UUID> focusedFrameLookup
     ) {
+        this.actionExecutor = new ActionExecutor(plugin);
         this.configSupplier = configSupplier;
         this.resolvers = List.copyOf(resolvers);
         this.editorManager = editorManager;

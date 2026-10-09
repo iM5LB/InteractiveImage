@@ -1,5 +1,10 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+- **`server:` action** — `server:<name>` sends the player to another server on the proxy via the BungeeCord plugin message channel (works on BungeeCord and Velocity). Use instead of `player:server <name>`, which never reaches proxy commands from the backend.
+
 ## [1.0.4-alpha] - 2026-08-11
 
 ### Fixed
