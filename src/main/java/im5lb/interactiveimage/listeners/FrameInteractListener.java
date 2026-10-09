@@ -74,11 +74,7 @@ public final class FrameInteractListener implements Listener {
         handleClick(event, player, frame, InteractiveFrameClickEvent.ClickType.RIGHT_CLICK);
     }
 
-<<<<<<< HEAD
     @EventHandler
-=======
-    @EventHandler(ignoreCancelled = true)
->>>>>>> def349e1f6806da719d6faffa5194baafb6b4e8c
     public void onDamage(EntityDamageByEntityEvent event) {
         if (!(event.getDamager() instanceof Player player)) {
             return;
@@ -114,15 +110,9 @@ public final class FrameInteractListener implements Listener {
         ResolvedTarget resolved = resolvedOpt.get();
 
         InteractiveImageConfig.MapRule rule = resolved.rule();
-<<<<<<< HEAD
         if (clickType == InteractiveFrameClickEvent.ClickType.LEFT_CLICK || (rule != null && rule.cancelInteract())) {
             // Always cancel entity damage for left-clicks to prevent destroying/dropping the interactive item frame,
             // and cancel vanilla interaction for right-clicks if configured.
-=======
-        if (rule != null && rule.cancelInteract()) {
-            // Always cancel vanilla interaction if configured, even if our click actions are gated by distance/hover.
-            // This makes "click range" effectively disable interactions outside the configured range.
->>>>>>> def349e1f6806da719d6faffa5194baafb6b4e8c
             cancellable.setCancelled(true);
         }
         if (!withinClickDistance(player, frame, cfg, resolved)) {

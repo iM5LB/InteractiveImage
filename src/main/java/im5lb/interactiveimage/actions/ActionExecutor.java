@@ -41,15 +41,11 @@ public final class ActionExecutor {
 
     private static void dispatch(CommandSender sender, String command) {
         String cmd = command.startsWith("/") ? command.substring(1) : command;
-<<<<<<< HEAD
         if (sender instanceof Player player) {
             player.performCommand(cmd);
         } else {
             Bukkit.dispatchCommand(sender, cmd);
         }
-=======
-        Bukkit.dispatchCommand(sender, cmd);
->>>>>>> def349e1f6806da719d6faffa5194baafb6b4e8c
     }
 
     private static String applyPlaceholders(String input, Map<String, String> placeholders) {
